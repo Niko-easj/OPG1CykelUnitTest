@@ -44,16 +44,17 @@ namespace CykelUnitTest.Tests
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void CykelTestPris()
         {
-            //
+            //Hvis cyklens pris er 0kr (gratis), smid exception.
             _cykel.Pris = 0;
         }
 
-        //Cyklen skal havde mellem 3 og 32 gear.
         [TestMethod()]
         public void CykelTestGear()
         {
+            //Cyklen skal havde mellem 3 og 32 gear.
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => _cykel.Gear = 2);
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => _cykel.Gear = 34);
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => _cykel.Gear = -5);
         }
     }
 }
